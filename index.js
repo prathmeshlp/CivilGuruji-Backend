@@ -1,4 +1,3 @@
-// Import necessary modules
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
@@ -10,6 +9,8 @@ const bodyParser = require('body-parser')
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+//Middlewares
 app.use(cors())
 app.use(bodyParser.json())
 app.use("/user",activityRoute);
@@ -26,6 +27,8 @@ mongoose.connect(process.env.MONGODBURL).then(()=>{
   console.log(error)
 });
 
+
+// Sending Email To All Users
 sendEmailToUsers()
   .then(() => {
     console.log('Email sending process initiated successfully.');
