@@ -14,6 +14,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use("/user",activityRoute);
 
+
+app.get('/',(req,res)=>{
+  res.json({message:"Home Page"})
+})
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODBURL).then(()=>{
   console.log("MongoDb Connected")
